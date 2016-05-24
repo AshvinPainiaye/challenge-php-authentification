@@ -107,8 +107,8 @@ if(isset($_POST['button'])){
                                 <div class="form-group label-floating">
                                     <label for="available" class="control-label">Available</label>
                                     <select name="available" class="form-control">
-                                        <option value="OUI">OUI</option>
-                                        <option value="NON">NON</option>
+                                        <option value="Ouvert">Ouvert</option>
+                                        <option value="Fermer">Fermer</option>
                                     </select>
                                 </div>
                                 <div class="form-group text-center">

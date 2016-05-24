@@ -156,17 +156,17 @@ $reponse = $bdd->query('SELECT * FROM hiking WHERE id = "'.$id.'" ');
                                     <label for="available" class="control-label">Available</label>
                                     <select name="available" class="form-control">
                                         <?php   
-                                        if($available == 'OUI'){
-                                            echo '<option value="OUI" selected="selected">OUI</option>';
+                                        if($available == 'Ouvert'){
+                                            echo '<option value="Ouvert" selected="selected">Ouvert</option>';
                                         } 
                                         else{
-                                            echo '<option value="OUI">OUI</option>';
+                                            echo '<option value="Ouvert">Ouvert</option>';
                                         }   
-                                        if($available == 'NON'){
-                                            echo '<option value="NON" selected="selected">NON</option>';
+                                        if($available == 'Fermer'){
+                                            echo '<option value="Fermer" selected="selected">Fermer</option>';
                                         } 
                                         else{
-                                            echo '<option value="NON">NON</option>';
+                                            echo '<option value="Fermer">Fermer</option>';
                                         }   
                                     ?>
                                     </select>
