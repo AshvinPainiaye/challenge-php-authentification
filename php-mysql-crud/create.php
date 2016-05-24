@@ -1,32 +1,31 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Ajouter une randonnée</title>
-    <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../app/public/libs/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Bootstrap Material Desig../n -->
-    <link href="../app/public/libs/bootstrap/dist/css/bootstrap-material-design.css" rel="stylesheet">
-    <link href="../app/public/libs/bootstrap/dist/css/ripples.min.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <?php
-include("PDO.php");
-  
-    
-
+<?php
 // On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
 session_start ();
+?>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Ajouter une randonnée</title>
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="../app/public/libs/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Bootstrap Material Desig../n -->
+        <link href="../app/public/libs/bootstrap/dist/css/bootstrap-material-design.css" rel="stylesheet">
+        <link href="../app/public/libs/bootstrap/dist/css/ripples.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <?php
+include("PDO.php");
 
 // On récupère nos variables de session
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
@@ -67,62 +66,62 @@ if(isset($_POST['button'])){
 
 ?>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <div class="well">
-                        <h1 style="margin-bottom:50px;">Ajouter</h1>
-                        <a href="read.php " class="btn btn-primary">Voir liste des randonnée</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <div class="well">
+                            <h1 style="margin-bottom:50px;">Ajouter</h1>
+                            <a href="read.php " class="btn btn-primary">Voir liste des randonnée</a>
 
-                        <form action="" method="post" class="text-left">
-                            <div class="form-group label-floating">
-                                <label for="name" class="control-label">Name</label>
-                                <input type="text" name="name" class="form-control" value="">
-                            </div>
+                            <form action="" method="post" class="text-left">
+                                <div class="form-group label-floating">
+                                    <label for="name" class="control-label">Name</label>
+                                    <input type="text" name="name" class="form-control" value="">
+                                </div>
 
-                            <div class="form-group">
-                                <label for="difficulty" class="control-label">Difficulté</label>
-                                <select name="difficulty" class="form-control">
-                                    <option value="très facile">Très facile</option>
-                                    <option value="facile">Facile</option>
-                                    <option value="moyen">Moyen</option>
-                                    <option value="difficile">Difficile</option>
-                                    <option value="très difficile">Très difficile</option>
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="difficulty" class="control-label">Difficulté</label>
+                                    <select name="difficulty" class="form-control">
+                                        <option value="très facile">Très facile</option>
+                                        <option value="facile">Facile</option>
+                                        <option value="moyen">Moyen</option>
+                                        <option value="difficile">Difficile</option>
+                                        <option value="très difficile">Très difficile</option>
+                                    </select>
+                                </div>
 
-                            <div class="form-group label-floating">
-                                <label for="distance" class="control-label">Distance</label>
-                                <input type="text" name="distance" class="form-control" value="">
-                            </div>
+                                <div class="form-group label-floating">
+                                    <label for="distance" class="control-label">Distance</label>
+                                    <input type="text" name="distance" class="form-control" value="">
+                                </div>
 
-                            <div class="form-group label-floating">
-                                <label for="duration" class="control-label">Durée</label>
-                                <input type="time" name="duration" class="form-control" value="">
-                            </div>
+                                <div class="form-group label-floating">
+                                    <label for="duration" class="control-label">Durée</label>
+                                    <input type="time" name="duration" class="form-control" value="">
+                                </div>
 
-                            <div class="form-group label-floating">
-                                <label for="height_difference" class="control-label">Dénivelé</label>
-                                <input type="text" name="height_difference" class="form-control" value="">
-                            </div>
-                            <div class="form-group label-floating">
-                                <label for="available" class="control-label">Available</label>
-                                <select name="available" class="form-control">
-                                    <option value="OUI">OUI</option>
-                                    <option value="NON">NON</option>
-                                </select>
-                            </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
-                            </div>
-                        </form>
+                                <div class="form-group label-floating">
+                                    <label for="height_difference" class="control-label">Dénivelé</label>
+                                    <input type="text" name="height_difference" class="form-control" value="">
+                                </div>
+                                <div class="form-group label-floating">
+                                    <label for="available" class="control-label">Available</label>
+                                    <select name="available" class="form-control">
+                                        <option value="OUI">OUI</option>
+                                        <option value="NON">NON</option>
+                                    </select>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <?php
+            <?php
     
 }
 else {
@@ -133,16 +132,16 @@ else {
 
 
 
-            <script src="../app/public/libs/jquery/dist/jquery.min.js"></script>
-            <script src="../app/public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+                <script src="../app/public/libs/jquery/dist/jquery.min.js"></script>
+                <script src="../app/public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 
-            <!-- Material Design for Bootstrap -->
-            <script src="../app/public/libs/jquery/dist/material.js"></script>
-            <script src="../app/public/libs/jquery/dist/ripples.min.js"></script>
-            <script>
-                $.material.init();
-            </script>
+                <!-- Material Design for Bootstrap -->
+                <script src="../app/public/libs/jquery/dist/material.js"></script>
+                <script src="../app/public/libs/jquery/dist/ripples.min.js"></script>
+                <script>
+                    $.material.init();
+                </script>
 
-</body>
+    </body>
 
-</html>
+    </html>
