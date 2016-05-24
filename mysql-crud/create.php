@@ -31,7 +31,7 @@ session_start ();
 // On récupère nos variables de session
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     
-    echo '<p class="text-center" style="margin: 10px auto 0 auto">Vous etes connecter sous le pseudo : '.$_SESSION['username'].' | <a href="../logout.php">Déconnection</a></p>';
+    echo '<p class="text-center" style="margin: 10px auto 0 auto">Vous etes connecter sous le pseudo : '.$_SESSION['username'].' | <a href="../logout.php">déconnexion</a></p>';
 	echo '<br />';
     
     
@@ -93,7 +93,7 @@ if(isset($_POST['button'])){
 
                             <div class="form-group label-floating">
                                 <label for="distance" class="control-label">Distance</label>
-                                <input type="number" min="0" name="distance" class="form-control" value="">
+                                <input type="text" name="distance" class="form-control" value="">
                             </div>
 
                             <div class="form-group label-floating">
@@ -103,11 +103,14 @@ if(isset($_POST['button'])){
 
                             <div class="form-group label-floating">
                                 <label for="height_difference" class="control-label">Dénivelé</label>
-                                <input type="number" min="0" name="height_difference" class="form-control" value="">
+                                <input type="text" name="height_difference" class="form-control" value="">
                             </div>
                             <div class="form-group label-floating">
                                 <label for="available" class="control-label">Available</label>
-                                <input type="text" name="available" class="form-control" value="">
+                                <select name="available" class="form-control">
+                                    <option value="OUI">OUI</option>
+                                    <option value="NON">NON</option>
+                                </select>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary" name="button">Envoyer</button>

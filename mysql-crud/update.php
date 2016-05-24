@@ -25,13 +25,13 @@
 include("PDO.php");
         
     
-// On démarre la session (ceci est indispensable dans toutes les pages de notre section membre)
+// On démarre la session
 session_start ();
 
 // On récupère nos variables de session
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 	
-	echo '<p class="text-center" style="margin: 10px auto 0 auto">Vous etes connecter sous le pseudo : '.$_SESSION['username'].' | <a href="../logout.php">Déconnection</a></p>';
+	echo '<p class="text-center" style="margin: 10px auto 0 auto">Vous etes connecter sous le pseudo : '.$_SESSION['username'].' | <a href="../logout.php">déconnexion</a></p>';
 	echo '<br />';
     
     $id = $_GET['id'];
@@ -41,11 +41,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $height_difference = NULL;
     $available = NULL;
 
-    
 $reponse = $bdd->query('SELECT * FROM hiking WHERE id = "'.$id.'" ');
 
         while ($donnees = $reponse->fetch()){
-
         $name = $donnees['name'];
         $difficulty = $donnees['difficulty'];
         $distance = $donnees['distance'];
@@ -54,8 +52,37 @@ $reponse = $bdd->query('SELECT * FROM hiking WHERE id = "'.$id.'" ');
         $available = $donnees['available'];
         }    
     
-?>
+//update du formulaire
+    if(isset($_POST['button'])){
+    $name = $_POST['name'];
+    $difficulty = $_POST['difficulty'];
+    $distance = $_POST['distance'];
+    $duration = $_POST['duration'];
+    $height_difference = $_POST['height_difference'];
+    $available = $_POST['available'];
 
+        
+   $req = $bdd->prepare('UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference, available = :available WHERE id = "'.$id.'" ');
+    
+   $state = $req->execute(array(
+	   'name' => $name,
+	   'difficulty' => $difficulty,
+	   'distance' => $distance,
+	   'duration' => $duration,
+	   'height_difference' => $height_difference,
+        'available' => $available
+	));   
+    
+ if($state == true){
+        
+    echo '<p class="text-center">La randonnée a été modifié avec succès.</p>';
+    }else{
+        echo '<p class="text-center">Une erreur s\'est produit lors de l\'envoie.</p>';
+    }
+}  
+        
+
+?>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
@@ -73,63 +100,76 @@ $reponse = $bdd->query('SELECT * FROM hiking WHERE id = "'.$id.'" ');
                                 <label for="difficulty" class="control-label">Difficulté</label>
                                 <select name="difficulty" class="form-control">
                                     <?php   
-                if($difficulty == 'très facile'){
-                   echo '<option value="très facile" selected="selected">Très facile</option>';
-                    } 
-                else{
-                    echo '<option value="très facile">Très facile</option>';
-                    }     
-                    
-                    if($difficulty == 'facile'){
-                   echo '<option value="facile" selected="selected">facile</option>';
-                    } 
-                else{
-                    echo '<option value="facile">facile</option>';
-                    }   
-                    
-                if($difficulty == 'moyen'){
-                   echo '<option value="moyen" selected="selected">moyen</option>';
-                    } 
-                else{
-                    echo '<option value="moyen">moyen</option>';
-                    }
-                    
-                if($difficulty == 'difficile'){
-                   echo '<option value="difficile" selected="selected">difficile</option>';
-                    } 
-                else{
-                    echo '<option value="difficile">difficile</option>';
-                    } 
-                    
-                if($difficulty == 'très difficile'){
-                   echo '<option value="très difficile" selected="selected">très difficile</option>';
-                    } 
-                else{
-                    echo '<option value="très difficile">très difficile</option>';
-                    } 
-                    
-            ?>
-
+                                        if($difficulty == 'très facile'){
+                                            echo '<option value="très facile" selected="selected">Très facile</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="très facile">Très facile</option>';
+                                        }     
+                                        
+                                        if($difficulty == 'facile'){
+                                            echo '<option value="facile" selected="selected">facile</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="facile">facile</option>';
+                                        }   
+                                        
+                                        if($difficulty == 'moyen'){
+                                            echo '<option value="moyen" selected="selected">moyen</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="moyen">moyen</option>';
+                                        }
+                                        
+                                        if($difficulty == 'difficile'){
+                                            echo '<option value="difficile" selected="selected">difficile</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="difficile">difficile</option>';
+                                        } 
+                                        
+                                        if($difficulty == 'très difficile'){
+                                            echo '<option value="très difficile" selected="selected">très difficile</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="très difficile">très difficile</option>';
+                                        } 
+                                    ?>
                                 </select>
                             </div>
 
                             <div class="form-group label-static">
                                 <label for="distance" class="control-label">Distance</label>
-                                <input type="number" min="0" name="distance" class="form-control" value=" <?php echo $distance; ?>">
+                                <input type="text" name="distance" class="form-control" value=" <?php echo $distance; ?>">
                             </div>
 
                             <div class="form-group label-static">
                                 <label for="duration" class="control-label">Durée</label>
-                                <input type="time" name="duration" class="form-control" value=" <?php echo $duration; ?> ">
+                                <input type="text" name="duration" class="form-control" value=" <?php echo $duration; ?> ">
                             </div>
 
                             <div class="form-group label-static">
                                 <label for="height_difference" class="control-label">Dénivelé</label>
-                                <input type="number" min="0" name="height_difference" class="form-control" value=" <?php echo $height_difference; ?> ">
+                                <input type="text" name="height_difference" class="form-control" value=" <?php echo $height_difference; ?> ">
                             </div>
-                            <div class="form-group label-static">
+                            <div class="form-group">
                                 <label for="available" class="control-label">Available</label>
-                                <input type="text" name="available" class="form-control" value=" <?php echo $available; ?> ">
+                                <select name="available" class="form-control">
+                                    <?php   
+                                        if($available == 'OUI'){
+                                            echo '<option value="OUI" selected="selected">OUI</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="OUI">OUI</option>';
+                                        }   
+                                        if($available == 'NON'){
+                                            echo '<option value="NON" selected="selected">NON</option>';
+                                        } 
+                                        else{
+                                            echo '<option value="NON">NON</option>';
+                                        }   
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-primary" name="button">Envoyer</button>
@@ -140,40 +180,13 @@ $reponse = $bdd->query('SELECT * FROM hiking WHERE id = "'.$id.'" ');
             </div>
         </div>
 
-
-
-
-
         <?php
-  
-if(isset($_POST['button'])){
-    $name = $_POST['name'];
-    $difficulty = $_POST['difficulty'];
-    $distance = $_POST['distance'];
-    $duration = $_POST['duration'];
-    $height_difference = $_POST['height_difference'];
-    $available = $_POST['available'];
-
-
-   $req = $bdd->prepare('UPDATE hiking SET name = :name, difficulty = :difficulty, distance = :distance, duration = :duration, height_difference = :height_difference, available = :available WHERE id = "'.$id.'" ');
-    
-    $req->execute(array(
-	   'name' => $name,
-	   'difficulty' => $difficulty,
-	   'distance' => $distance,
-	   'duration' => $duration,
-	   'height_difference' => $height_difference,
-        'available' => $available
-	));   
-}  
-        
+//ferme le if isset
 }
-    
-else {
-	echo '<p class="text-center" style="margin-top:20px;">Vous n\'etes pas connecter <br> <a href="../login.php"class="btn btn-primary">Se connecter</a></p>';
-}    
-
-?>
+    else {
+	echo '<p class="text-center" style="margin-top:20px;">Vous n\'etes pas connecter <br> <a href="../login.php"class="btn btn-primary">Se connecter</a> | <a href="read.php"class="btn btn-primary">Voir liste des randonnée</a></p>';
+}  
+        ?>
 
 
             <script src="../app/public/libs/jquery/dist/jquery.min.js"></script>

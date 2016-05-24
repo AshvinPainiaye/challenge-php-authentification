@@ -16,16 +16,15 @@
     <!-- Bootstrap Material Desig../n -->
     <link href="app/public/libs/bootstrap/dist/css/bootstrap-material-design.css" rel="stylesheet">
     <link href="app/public/libs/bootstrap/dist/css/ripples.min.css" rel="stylesheet">
-
-
 </head>
+
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="well" style="margin-top:100px;">
-
+                    <h1 class="text-center" style="margin-bottom:50px;">Connexion</h1>
                     <form action="check_login.php" method="post">
                         <div class="form-group label-floating">
                             <label for="login" class="control-label">Identifiant</label>
@@ -45,9 +44,6 @@
         </div>
     </div>
 
-
-
-
     <script src="app/public/libs/jquery/dist/jquery.min.js"></script>
     <script src="app/public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -57,8 +53,6 @@
     <script>
         $.material.init();
     </script>
-
-
 
 </body>
 
