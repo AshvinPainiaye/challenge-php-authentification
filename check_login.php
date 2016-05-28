@@ -1,6 +1,6 @@
 <?php
 
-include("php-mysql-crud/PDO.php");
+include("PDO.php");
 
 // on teste si nos variables sont définies
 if ((isset($_POST['username']) && !empty($_POST['username'])) && (isset($_POST['password']) && !empty($_POST['password']))) {
@@ -22,9 +22,9 @@ while ($donnees = $req->fetch())
     $login_valide = $donnees['username'];
     $pwd_valide = $donnees['password'];
 }
-    
+
 $req->closeCursor();
-    
+
 	// on vérifie les informations du formulaire, à savoir si le pseudo saisi est bien un pseudo autorisé, de même pour le mot de passe
 	if ($login_valide == $username && $pwd_valide == $password) {
 		// dans ce cas, tout est ok, on peut démarrer notre session
@@ -48,8 +48,8 @@ else {
     echo '<body onLoad="alert(\'Veuillez renseigner vos information\')">';
     echo '<meta http-equiv="refresh" content="0;URL=login.php">';
 }
-    
-    
+
+
 
 
 ?>

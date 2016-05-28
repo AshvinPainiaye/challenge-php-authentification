@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start ();
 ?>
     <!DOCTYPE html>
@@ -45,11 +45,11 @@ session_start ();
                         <div class="col-md-12">
                             <div class="bs-component text-center">
                                 <?php
-             
-                        include("PDO.php");
-        
-                        $req = $bdd->query('SELECT * FROM hiking'); 
-        
+
+                        include("../PDO.php");
+
+                        $req = $bdd->query('SELECT * FROM hiking');
+
                         ?>
                                     <table class="table table-striped table-hover text-left table-responsive">
                                         <thead>
@@ -70,10 +70,10 @@ session_start ();
 
                                             <?php
                                     while ($donnees = $req->fetch()){
-                                        
+
                                     echo '<tr>';
-                                    echo '<td>'.'<a href="update.php?id='.$donnees['id'].'">'.$donnees['name'].'</a></td>';  echo '<td>'.$donnees['distance'].'</td>';    
-                                    echo '<td>'.$donnees['difficulty'].'</td>';       
+                                    echo '<td>'.'<a href="update.php?id='.$donnees['id'].'">'.$donnees['name'].'</a></td>';  echo '<td>'.$donnees['distance'].'</td>';
+                                    echo '<td>'.$donnees['difficulty'].'</td>';
                                     echo '<td>'.$donnees['duration'].'</td>';
                                     echo '<td>'.$donnees['height_difference'].'</td>';
                                     echo '<td>'.$donnees['available'].'</td>';

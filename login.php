@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+
+  <meta charset="utf-8">
     <title>Login</title>
     <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
@@ -54,6 +55,8 @@
         $.material.init();
     </script>
 
-</body>
 
-</html>
+
+  </body>
+
+  </html>
